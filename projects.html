@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Aaed Musa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f6f6f6;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #e8e8e8;
+      --hover-border: #c0c0c0;
+      --font: 'Outfit', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── Navigation ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--text);
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-center a {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      transition: opacity 0.2s;
+    }
+
+    .nav-center a:hover {
+      opacity: 0.5;
+    }
+
+    .nav-center a.active {
+      font-weight: 500;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .social-link:hover {
+      opacity: 1;
+    }
+
+    .social-link svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    /* ─── Page Header ─── */
+    .page-header {
+      padding: 64px 48px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-header-inner {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 40px;
+    }
+
+    .page-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    /* ─── Projects Grid ─── */
+    .projects-section {
+      padding: 40px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      display: block;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+      background: var(--bg);
+    }
+
+    .project-card:hover {
+      border-color: #aaa;
+      transform: translateY(-3px);
+    }
+
+    .project-thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .thumb-1 { background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%); }
+    .thumb-2 { background: linear-gradient(135deg, #e0e4e8 0%, #c8cfd6 100%); }
+    .thumb-3 { background: linear-gradient(135deg, #e8e4e0 0%, #d6cfc8 100%); }
+    .thumb-4 { background: linear-gradient(135deg, #e4e8e4 0%, #ccd6cc 100%); }
+    .thumb-5 { background: linear-gradient(135deg, #e8e4e8 0%, #d6ccd6 100%); }
+    .thumb-6 { background: linear-gradient(135deg, #e8e8e4 0%, #d6d6cc 100%); }
+    .thumb-7 { background: linear-gradient(135deg, #e4e4e8 0%, #ccccda 100%); }
+    .thumb-8 { background: linear-gradient(135deg, #e8e4e4 0%, #d6cccc 100%); }
+    .thumb-9 { background: linear-gradient(135deg, #e4e8e8 0%, #ccd6d6 100%); }
+
+    .project-info {
+      padding: 18px 20px 20px;
+    }
+
+    .project-name {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .project-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-email {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-email:hover {
+      color: var(--text);
+    }
+
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-nav a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--text);
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .nav-center {
+        display: none;
+      }
+
+      .page-header {
+        padding: 48px 24px 32px;
+      }
+
+      .projects-section {
+        padding: 32px 24px 64px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 32px 24px;
+      }
+
+      .footer-nav {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav>
+    <a class="nav-logo" href="/">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/6418e6d065d3d21e3aa3e096/3f86b4eb-35fb-4349-9f36-b606f714c175/Channel+Icon.png"
+        alt="Aaed Musa"
+        onerror="this.style.display='none'"
+      />
+      Aaed Musa
+    </a>
+
+    <div class="nav-center">
+      <a href="/">Home</a>
+      <a href="/projects" class="active">Projects</a>
+    </div>
+
+    <div class="nav-right">
+      <!-- Instagram -->
+      <a class="social-link" href="https://www.instagram.com/aaedmusayt/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a class="social-link" href="https://www.linkedin.com/in/aaedmusa/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+      <!-- YouTube -->
+      <a class="social-link" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <!-- X / Twitter -->
+      <a class="social-link" href="https://twitter.com/aaedmusayt" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ─── Page Header ─── -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="page-label">Portfolio</p>
+      <h1 class="page-title">All Projects</h1>
+    </div>
+  </div>
+
+  <!-- ─── Projects ─── -->
+  <section class="projects-section">
+    <div class="projects-grid">
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-1">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">3D Printed Robotic Arm</h3>
+          <p class="project-desc">A six-axis robotic arm built with 3D printed parts, servo motors, and custom electronics — controlled via joystick and programmed movement sequences.</p>
+          <span class="project-tag">Robotics</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-2">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Magnetic Levitation Device</h3>
+          <p class="project-desc">An electromagnetic levitation project using feedback-controlled coils to suspend a permanent magnet in mid-air with sub-millimeter precision.</p>
+          <span class="project-tag">Electronics</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-3">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="10" rx="2"/>
+            <path d="M7 7V4m10 3V4M7 17v3m10-3v3"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Self-Balancing Robot</h3>
+          <p class="project-desc">A two-wheeled inverted pendulum robot using a PID control loop, IMU sensor fusion, and DC motor drivers to maintain upright balance autonomously.</p>
+          <span class="project-tag">Control Systems</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-4">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Star Tracker Mount</h3>
+          <p class="project-desc">A motorized equatorial mount for astrophotography that compensates for Earth's rotation, enabling long-exposure shots of deep-sky objects.</p>
+          <span class="project-tag">Mechanical</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-5">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
+            <polyline points="7.5 19.79 7.5 14.6 3 12"/>
+            <polyline points="21 12 16.5 14.6 16.5 19.79"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Mini CNC Plotter</h3>
+          <p class="project-desc">A desktop CNC plotter with GRBL firmware, dual-axis stepper control, and a pen-lift servo — capable of reproducing vector artwork on paper.</p>
+          <span class="project-tag">CNC / Fabrication</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-6">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/>
+            <line x1="10" y1="1" x2="10" y2="4"/>
+            <line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Automated Espresso Machine</h3>
+          <p class="project-desc">A modified espresso machine with a microcontroller-based PID temperature controller, pressure profiling, and Bluetooth telemetry logging.</p>
+          <span class="project-tag">Embedded Systems</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-7">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Underwater ROV</h3>
+          <p class="project-desc">A remotely operated underwater vehicle with four thrusters, depth sensing, onboard camera, and a watertight electronics enclosure rated to 10 meters.</p>
+          <span class="project-tag">Robotics</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-8">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Wireless Motor Controller</h3>
+          <p class="project-desc">A custom PCB-based brushless motor controller with FOC algorithm, ESP32 wireless interface, and real-time parameter tuning via a mobile app.</p>
+          <span class="project-tag">Electronics</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-9">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Quadruped Walking Robot</h3>
+          <p class="project-desc">A four-legged walking robot with twelve degrees of freedom, inverse kinematics gait planning, and terrain-adaptive stepping using foot contact sensors.</p>
+          <span class="project-tag">Robotics</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <a class="footer-email" href="mailto:aaedmusa02@gmail.com">aaedmusa02@gmail.com</a>
+
+    <ul class="footer-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/projects">Projects</a></li>
+    </ul>
+
+    <div class="footer-social">
+      <a class="social-link" href="https://www.instagram.com/aaedmusayt/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a class="social-link" href="https://www.linkedin.com/in/aaedmusa/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+      <a class="social-link" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a class="social-link" href="https://twitter.com/aaedmusayt" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

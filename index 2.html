@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaed Musa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f6f6f6;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #e8e8e8;
+      --hover-border: #c0c0c0;
+      --font: 'Outfit', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── Navigation ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--text);
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-center a {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      transition: opacity 0.2s;
+    }
+
+    .nav-center a:hover {
+      opacity: 0.5;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .social-link:hover {
+      opacity: 1;
+    }
+
+    .social-link svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      padding: 80px 48px 72px;
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-name {
+      font-size: 38px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero-bio {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 26px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-dark {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    .btn-dark:hover {
+      background: #333;
+      border-color: #333;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--hover-border);
+    }
+
+    .btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ─── Divider ─── */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ─── Projects ─── */
+    .projects-section {
+      padding: 72px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .view-all-link {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .view-all-link:hover {
+      color: var(--text);
+    }
+
+    .view-all-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      display: block;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+      background: var(--bg);
+    }
+
+    .project-card:hover {
+      border-color: #aaa;
+      transform: translateY(-3px);
+    }
+
+    .project-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      background: var(--surface);
+    }
+
+    /* Placeholder thumbnails using CSS */
+    .project-thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .thumb-1 { background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%); }
+    .thumb-2 { background: linear-gradient(135deg, #e0e4e8 0%, #c8cfd6 100%); }
+    .thumb-3 { background: linear-gradient(135deg, #e8e4e0 0%, #d6cfc8 100%); }
+
+    .project-info {
+      padding: 18px 20px 20px;
+    }
+
+    .project-name {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-email {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-email:hover {
+      color: var(--text);
+    }
+
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-nav a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--text);
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .nav-center {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 24px 56px;
+      }
+
+      .hero-name {
+        font-size: 28px;
+      }
+
+      .projects-section {
+        padding: 56px 24px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 32px 24px;
+      }
+
+      .footer-nav {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav>
+    <a class="nav-logo" href="/">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/6418e6d065d3d21e3aa3e096/3f86b4eb-35fb-4349-9f36-b606f714c175/Channel+Icon.png"
+        alt="Aaed Musa"
+        onerror="this.style.display='none'"
+      />
+      Aaed Musa
+    </a>
+
+    <div class="nav-center">
+      <a href="/">Home</a>
+      <a href="#projects">Projects</a>
+    </div>
+
+    <div class="nav-right">
+      <!-- Instagram -->
+      <a class="social-link" href="https://www.instagram.com/aaedmusayt/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a class="social-link" href="https://www.linkedin.com/in/aaedmusa/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+      <!-- YouTube -->
+      <a class="social-link" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <!-- X / Twitter -->
+      <a class="social-link" href="https://twitter.com/aaedmusayt" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero">
+    <img
+      class="hero-avatar"
+      src="https://images.squarespace-cdn.com/content/v1/6418e6d065d3d21e3aa3e096/3f86b4eb-35fb-4349-9f36-b606f714c175/Channel+Icon.png"
+      alt="Aaed Musa"
+      onerror="this.outerHTML='<div class=\'hero-avatar\' style=\'background:#e8e8e8;display:flex;align-items:center;justify-content:center;\'><svg width=\'56\' height=\'56\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#aaa\' stroke-width=\'1.5\'><path d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'/><circle cx=\'12\' cy=\'7\' r=\'4\'/></svg></div>'"
+    />
+
+    <p class="hero-subtitle">Mechanical Engineer / YouTuber</p>
+    <h1 class="hero-name">Aaed Musa</h1>
+
+    <p class="hero-bio">
+      I have a burning passion for building robots and gadgets. My work spans design iteration, fabrication, and rapid prototyping. I combine engineering with filmmaking to create entertaining and educational videos for people of all backgrounds.
+    </p>
+
+    <div class="hero-cta">
+      <a class="btn btn-dark" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <!-- YouTube icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23 7s-.27-1.9-1.1-2.73c-1.05-1.1-2.23-1.1-2.77-1.17C16.24 3 12 3 12 3s-4.24 0-7.13.1c-.54.07-1.72.07-2.77 1.17C1.27 5.1 1 7 1 7S.73 9.1.73 11.2v1.97c0 2.1.27 4.2.27 4.2s.27 1.9 1.1 2.73c1.05 1.1 2.43 1.06 3.04 1.18C7.1 21.37 12 21.37 12 21.37s4.24 0 7.13-.1c.54-.07 1.72-.07 2.77-1.17.83-.83 1.1-2.73 1.1-2.73s.27-2.1.27-4.2V11.2C23.27 9.1 23 7 23 7zM9.74 14.85V8.66l6.51 3.1-6.51 3.09z"/>
+        </svg>
+        YouTube
+      </a>
+      <a class="btn btn-outline" href="https://drive.google.com/file/d/1bNO_lRrFiOgGnG6bqZmA7V_xPYaQg2DK/view" target="_blank" rel="noopener">
+        <!-- Doc icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        Resume
+      </a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── Projects ─── -->
+  <section class="projects-section" id="projects">
+    <div class="section-header">
+      <span class="section-label">Latest Projects</span>
+      <a class="view-all-link" href="/projects">
+        View all Projects
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="projects-grid">
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-1">
+          <!-- Robotic arm icon -->
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">3D Printed Robotic Arm</h3>
+          <p class="project-desc">A six-axis robotic arm built with 3D printed parts, servo motors, and custom electronics — controlled via joystick and programmed movement sequences.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-2">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Magnetic Levitation Device</h3>
+          <p class="project-desc">An electromagnetic levitation project using feedback-controlled coils to suspend a permanent magnet in mid-air with sub-millimeter precision.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener">
+        <div class="project-thumb-placeholder thumb-3">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="10" rx="2"/>
+            <path d="M7 7V4m10 3V4M7 17v3m10-3v3"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">Self-Balancing Robot</h3>
+          <p class="project-desc">A two-wheeled inverted pendulum robot using a PID control loop, IMU sensor fusion, and DC motor drivers to maintain upright balance autonomously.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <a class="footer-email" href="mailto:aaedmusa02@gmail.com">aaedmusa02@gmail.com</a>
+
+    <ul class="footer-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+
+    <div class="footer-social">
+      <a class="social-link" href="https://www.instagram.com/aaedmusayt/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a class="social-link" href="https://www.linkedin.com/in/aaedmusa/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+      <a class="social-link" href="https://www.youtube.com/channel/UCX981hh-RI_L1QOwV08osNA" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a class="social-link" href="https://twitter.com/aaedmusayt" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
